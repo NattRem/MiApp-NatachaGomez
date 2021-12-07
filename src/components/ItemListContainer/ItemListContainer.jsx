@@ -1,9 +1,11 @@
-import React from 'react'
+import React from 'react';
+import ItemCount from "./ItemCount";
 
 function ItemListContainer({saludo}) {
     return (
         <div>
             {saludo}
+            < ItemCount />
         </div>
     )
 }

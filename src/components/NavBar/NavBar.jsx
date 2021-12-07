@@ -10,7 +10,7 @@ const NavBar = () => {
         <div>
             <Navbar bg="dark" variant="dark">
                 <Container>
-                <Navbar.Brand href="#home"><img src="assets/logo.png" alt="logo" width="90" /></Navbar.Brand>
+                <Navbar.Brand href="#home"><img src="assets/logo.png" alt="logo" width="100" /></Navbar.Brand>
                 <Nav className="me-auto">
                 <Nav.Link href="#home">Home</Nav.Link>
                 <Nav.Link href="#features">Variedades</Nav.Link>
