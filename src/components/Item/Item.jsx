@@ -1,24 +1,18 @@
 import React from 'react'
-
-import {getFetch} from "../../helpers/getFetch"
-import {Card} from "react-bootstrap"
+import '../estilos/card.css'
+import {Card, Button} from "react-bootstrap"
 
 function Item({prod}) {
-    return (
-        <div 
-            key={prod.id}
-            className='col-md-2'
-        >     
-        <Card border="dark" style={{ width: '18rem' }}>
-            <Card.Img src={prod.foto} width="50%"/>
+    return (    
+        <Card key={prod.id} style={{ width: '18rem' }} className='m-4 mx-auto bg-card card'>
+            <Card.Img src={prod.foto} className='card-img'/>
             <Card.Body>
-            <Card.Title>{prod.nombre}</Card.Title>
-            <Card.Text>
-            {prod.precio}
+            <Card.Title className='card-title'>{prod.nombre}</Card.Title>
+            <Card.Text >
             </Card.Text>
+            <Button className="card-precio" variant="dark">{prod.precio}</Button>
             </Card.Body>
         </Card>                   
-        </div>
     )
 }
 

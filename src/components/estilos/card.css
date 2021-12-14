@@ -1,0 +1,19 @@
+.bg-card{
+    background-color: rgb(0, 0, 0,0.3);
+}
+.card-img{
+    padding: 10px;
+}
+.card-title{
+    color: rgb(199, 199, 199);
+    font-weight: bold;
+    font-size:23px;
+}
+.card-precio{
+    color: rgb(145, 143, 145);
+    font-weight: bold;
+    font-size:30px;
+}
+.card{
+    border-color: rgb(85, 87, 89);
+}

@@ -3,6 +3,7 @@ import ItemCount from "./ItemCount";
 import {useState, useEffect} from "react";
 import {getFetch} from "../../helpers/getFetch"
 import ItemList from '../ItemList/ItemList';
+import "../estilos/ItemListContainer.css";
 
 
 function ItemListContainer({saludo}) {
@@ -17,9 +18,8 @@ function ItemListContainer({saludo}) {
     }, [])
 
     return (
-        <div>
+        <div className='bg'>
             {saludo}
-            < ItemCount />
             {loading ? 
                 <h2>cargando...</h2>
             :
