@@ -4,6 +4,7 @@ import {useState, useEffect} from "react";
 import {getFetch} from "../../helpers/getFetch"
 import ItemList from '../ItemList/ItemList';
 import "../estilos/ItemListContainer.css";
+import {Spinner} from "react-bootstrap"
 
 
 function ItemListContainer({saludo}) {
@@ -18,10 +19,14 @@ function ItemListContainer({saludo}) {
     }, [])
 
     return (
-        <div className='bg'>
+        <div className='container-fluid card-title'>
             {saludo}
             {loading ? 
-                <h2>cargando...</h2>
+                <div className='loading'>
+                    <br/>
+                    <Spinner animation="border" variant="light" />
+                    <h2>cargando...</h2>
+                </div>
             :
                 < ItemList productos ={productos}/>
             }
