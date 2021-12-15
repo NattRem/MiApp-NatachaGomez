@@ -1,10 +1,10 @@
 import React from 'react';
-import ItemCount from "./ItemCount";
 import {useState, useEffect} from "react";
 import {getFetch} from "../../helpers/getFetch"
 import ItemList from '../ItemList/ItemList';
 import "../estilos/ItemListContainer.css";
 import {Spinner} from "react-bootstrap"
+import ItemDetailContainer from "../ItemDetailContainer/ItemDetailContainer.js"
 
 
 function ItemListContainer({saludo}) {
@@ -28,8 +28,13 @@ function ItemListContainer({saludo}) {
                     <h2>cargando...</h2>
                 </div>
             :
+            <div className="pb-5">
                 < ItemList productos ={productos}/>
+                <ItemDetailContainer />
+            </ div>
             }
+            
+
         </div>
     )
 }

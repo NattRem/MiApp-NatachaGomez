@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import "../estilos/ItemDetail.css";
 
 
 
@@ -23,7 +24,7 @@ function ItemCount() {
             setValue(value - 1)
         }
     }
-    
+
     const handMostrar = ()=> {
         toast(`Agregaste ${value} productos al carrito`, {
             position: "bottom-center",
@@ -37,12 +38,12 @@ function ItemCount() {
             });
     }
     return (
-        <div>
-            <h1>{value}</h1>
-            <Button className="m-4" variant="dark" onClick={handResta}>-</Button>
-            <Button className="m-4" variant="dark" onClick={handSuma}>+</Button>
+        <div className="">
+            <h1 className="countValue">{value}</h1>
+            <Button className="m-1 count" variant="dark" onClick={handResta}>-</Button>
+            <Button className="m-1 count" variant="dark" onClick={handSuma}>+</Button>
             <br />
-            <Button className="m-4" variant="dark" onClick={handMostrar}>Agregar al carrito</Button>
+            <Button className="m-1 count" variant="dark" onClick={handMostrar}>Agregar al carrito</Button>
             <ToastContainer />
         </div>
     )

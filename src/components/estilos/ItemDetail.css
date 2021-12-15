@@ -1,0 +1,25 @@
+.detail-img{
+    width:50%
+}
+.detail-precio{
+    border-bottom: solid;
+    border-width: 1px;
+    padding-bottom: 15px;
+}
+.detail-texto{
+    font-size:21px;
+    font-weight: 200;
+    font-stretch: expanded;
+}
+
+.detail-title{
+    font-size:30px;
+    font-weight: bold;
+}
+
+.count{
+    font-size:15px;
+}
+.countValue{
+    font-size:20px;
+}
