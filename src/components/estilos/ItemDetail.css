@@ -10,6 +10,7 @@
     font-size:21px;
     font-weight: 200;
     font-stretch: expanded;
+    color: rgb(199, 199, 199);
 }
 
 .detail-title{
@@ -19,7 +20,9 @@
 
 .count{
     font-size:15px;
+    color: rgb(199, 199, 199);
 }
 .countValue{
     font-size:20px;
+    color: rgb(199, 199, 199);
 }

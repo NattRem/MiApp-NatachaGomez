@@ -5,3 +5,4 @@ export const getFetch = new Promise ((resolve)=>{
         resolve(productos)
     }, 2000)
 })
+

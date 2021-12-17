@@ -1,6 +1,7 @@
 import React from 'react'
 import '../estilos/card.css'
 import {Card, Button} from "react-bootstrap"
+import {Link} from "react-router-dom"
 
 function Item({prod}) {
     return (    
@@ -9,8 +10,10 @@ function Item({prod}) {
             <Card.Body>
             <Card.Title className='card-title'>{prod.nombre}</Card.Title>
             <Card.Text >
+                <h3 className="card-precio">{prod.precio}</h3>
             </Card.Text>
-            <Button className="card-precio" variant="dark">{prod.precio}</Button>
+            <Link to ={`/detalle/${prod.id}`}><Button variant="dark">+ info</Button></Link>
+            
             </Card.Body>
         </Card>                   
     )

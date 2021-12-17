@@ -3,11 +3,11 @@ import "../estilos/ItemDetail.css"
 import ItemCount from "../ItemListContainer/ItemCount"
 
 const ItemDetail = ({ item }) => {
-    console.log("El item", item);
+
     return (
-        <Container className='m-4 mx-auto bg-card card'>
+        <Container className='m-5 pb-5 mx-auto bg-card card'>
             <Row >
-                <Col><Card.Img src={`${item.image}`} className='detail-img'/></Col>
+                <Col><Card.Img src={`${item.imagen}`} className='detail-img'/></Col>
                 <Col><Card.Body>
                     <Card.Title className='detail-title'>{item.title}</Card.Title>
                     <Card.Text >
