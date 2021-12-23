@@ -2,10 +2,9 @@ import React from 'react'
 import "../estilos/ItemDetail.css"
 
 function CartWidget() {
+
     return (
-        <div className="p-5 m-5">
-            <h4 className="p-5 m-5 detail-texto">CART</h4>
-        </div>
+        <img src= "https://res.cloudinary.com/dlvolch1i/image/upload/v1639628893/WikyApp/IconCarrito_j3nfxm.svg" alt="Icono Carrito" width="40" />
         
     )
 }

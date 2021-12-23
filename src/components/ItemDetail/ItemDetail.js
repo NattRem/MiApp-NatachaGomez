@@ -5,10 +5,14 @@ import ItemCount from "../ItemListContainer/ItemCount"
 import {useState} from "react";
 import { Link } from "react-router-dom";
 import { toast, ToastContainer} from 'react-toastify';
+import { useCartContext } from "../Context/CartContext";
+
 
 
 const ItemDetail = ({ item }) => {
     const [goCart, setGoCart] = useState (false)
+
+    const {cartList, agregarAlCarrito}=useCartContext()
 
     const onAdd = (cantidad)=> {
         toast(`Agregaste ${cantidad} productos al carrito`, {
@@ -23,9 +27,10 @@ const ItemDetail = ({ item }) => {
                     });
         console.log(cantidad);
         setGoCart(true);
+        agregarAlCarrito({...item, cantidad:cantidad})
     }
 
-    
+    console.log(cartList);
     return (
         <Container className='m-5 pb-5 mx-auto bg-card card'>
             <Row >

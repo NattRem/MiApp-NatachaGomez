@@ -5,6 +5,8 @@ import Container from "react-bootstrap/Container"
 import Nav from "react-bootstrap/Nav"
 import {Link} from "react-router-dom"
 import { NavDropdown } from 'react-bootstrap'
+import CartWidget from '../CartWidget/CartWidget'
+
 
 
 
@@ -27,7 +29,7 @@ const NavBar = () => {
                         
                         
                     </Navbar.Collapse>
-                    <Link to="/cart"><img src= "https://res.cloudinary.com/dlvolch1i/image/upload/v1639628893/WikyApp/IconCarrito_j3nfxm.svg" alt="Icono Carrito" width="40" /></Link>
+                    <Link to="/cart"><CartWidget /></Link>
                 </Container>
             </Navbar>
             

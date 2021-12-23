@@ -17,3 +17,8 @@
 .card{
     border-color: rgb(85, 87, 89);
 }
+.width{
+    width: 70%;
+    
+    justify-content: center;
+}
