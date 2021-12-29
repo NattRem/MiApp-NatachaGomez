@@ -45,7 +45,10 @@ const ItemDetail = ({ item }) => {
                         <ItemCount stock={item.stock} onAdd={onAdd}/>
                         
                     ) : (
-                        <Link to="/cart" type="button" class="btn btn-dark m-4">Ir al Carrito</Link>)}
+                        <div>
+                            <Link to="/cart" type="button" class="btn btn-dark m-4">Ir al Carrito</Link>
+                            <Link to="/" className="btn btn-dark m-4" >Seguir comprando</Link>
+                        </div>)}
                     <ToastContainer />
                 </Card.Body>
                 

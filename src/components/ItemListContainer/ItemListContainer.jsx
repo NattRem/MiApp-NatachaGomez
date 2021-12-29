@@ -30,7 +30,6 @@ function ItemListContainer({saludo}) {
         
     }, [idCateg]);
 
-    console.log(idCateg);
 
     return (
         <div className='container-fluid card-title'>
