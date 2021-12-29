@@ -8,7 +8,7 @@ import { useCartContext } from '../Context/CartContext'
 
 function Cart() {
 
-    const {cartList, borrarCarrito,borrarItem, total} = useCartContext()
+    const {cartList, borrarCarrito,borrarItem, totalPrice} = useCartContext()
 
     
     return (
@@ -38,18 +38,13 @@ function Cart() {
                             <td><Button className="btn btn-dark m-2" onClick={() => borrarItem(item.id)}>🗑</Button>{item.id}</td>
                             <td>{item.title}</td>
                             <td>{item.cantidad}</td>
-                            <td>{item.precio}</td>
+                            <td>$ {item.precio}</td>
                             <td><img src={`${item.imagen}`} width="50%" alt="ImagenProducto"/></td>
-                            <td></td>
+                            <td>$ {item.precio * item.cantidad}</td>
                         </tr>)}
-
                         <tr>
-                            <td></td>
-                            <td></td>
-                            <td>IVA</td>
-                            <td></td>
                             <td>TOTAL</td>
-                            <td>{total}</td>
+                            <td><strong>$ {totalPrice}</strong></td>
                         </tr>
                     </tbody>
                     

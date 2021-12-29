@@ -4,7 +4,7 @@ import { useCartContext } from '../Context/CartContext'
 import "../estilos/ItemDetail.css"
 
 function CartWidget() {
-    const {cartList} = useCartContext()
+    const {cartList,} = useCartContext()
 
     return (
         <>
