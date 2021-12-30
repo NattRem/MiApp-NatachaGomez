@@ -10,7 +10,10 @@ import CartWidget from '../CartWidget/CartWidget'
 
 
 
+
 const NavBar = () => {
+
+
     return (
         <div>
             <Navbar collapseOnSelect expand="lg" variant="dark" className="bgNav">
@@ -22,7 +25,7 @@ const NavBar = () => {
                             <Link to ="/" className="nav-link" activeClassName="active">Home</Link>
                             <NavDropdown title="Variedades" id="collasible-nav-dropdown">
                                 <Link to ="/categoria/vodka" className="dropdown-item">Vodka</Link>
-                                <Link to ="/categoria/wisky" className="dropdown-item">Wisky</Link>
+                                <Link to ="/categoria/whisky" className="dropdown-item">Whisky</Link>
                                 <Link to ="/categoria/Gin" className="dropdown-item">Gin</Link>
                             </NavDropdown>
                         </Nav>

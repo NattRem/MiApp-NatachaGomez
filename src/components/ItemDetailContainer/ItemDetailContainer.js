@@ -1,23 +1,36 @@
 import { useState, useEffect } from "react";
 import { Spinner } from "react-bootstrap";
-import {getProducto} from "../../helpers/getProducto";
+// import {getProducto} from "../../helpers/getProducto";
 import ItemDetail from "../ItemDetail/ItemDetail";
 import {useParams} from "react-router-dom"
+import{doc, getDoc,getFirestore} from "firebase/firestore"
 
 const ItemDetailContainer = () => {
-    const [item, setItem] = useState([]);
+    // const [item, setItem] = useState([]);
     const [loading, setLoading] = useState(true)
+    const[producto, setProducto] = useState({})
 
 
     const {id} = useParams()
 
 
+    // useEffect(() => {
+    // getProducto
+    //     .then((res) => setItem(res.find(item => item.id === parseInt(id))))
+    //     .catch((err) => console.log(err))
+    //     .finally(()=> setLoading(false))
+    // },[id]);
+
     useEffect(() => {
-    getProducto
-        .then((res) => setItem(res.find(item => item.id === parseInt(id))))
+        const db = getFirestore()
+        const queryDb = doc(db, "productos", id)
+        getDoc(queryDb)
+        .then (resp => setProducto({ id: resp.id, ...resp.data() }))
         .catch((err) => console.log(err))
         .finally(()=> setLoading(false))
-    },[id]);
+
+    }, {id})
+    console.log(producto);
 
     return (
         <div>
@@ -29,7 +42,7 @@ const ItemDetailContainer = () => {
                 </div>
                 :
                 <div>
-                <ItemDetail item={item} />
+                <ItemDetail producto={producto} />
                 </div>
             }
         </div>

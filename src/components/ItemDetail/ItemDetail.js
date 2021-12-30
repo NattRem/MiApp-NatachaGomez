@@ -9,7 +9,7 @@ import { useCartContext } from "../Context/CartContext";
 
 
 
-const ItemDetail = ({ item }) => {
+const ItemDetail = ({ producto }) => {
     const [goCart, setGoCart] = useState (false)
 
     const {cartList, agregarAlCarrito}=useCartContext()
@@ -27,22 +27,22 @@ const ItemDetail = ({ item }) => {
                     });
         console.log(cantidad);
         setGoCart(true);
-        agregarAlCarrito({...item, cantidad:cantidad})
+        agregarAlCarrito({...producto, cantidad:cantidad})
     }
 
     console.log(cartList);
     return (
         <Container className='m-5 pb-5 mx-auto bg-card card'>
             <Row >
-                <Col><Card.Img src={`${item.imagen}`} className='detail-img'/></Col>
+                <Col><Card.Img src={`${producto.imagenID}`} className='detail-img'/></Col>
                 <Col><Card.Body>
-                    <Card.Title className='detail-title'>{item.title}</Card.Title>
+                    <Card.Title className='detail-title'>{producto.title}</Card.Title>
                     <Card.Text >
-                        <h3 className="card-precio detail-precio">{item.precio}</h3>
-                        <h4 className="detail-texto">{item.descripcion}</h4>
+                        <h3 className="card-precio detail-precio">{producto.precio}</h3>
+                        <h4 className="detail-texto">{producto.descripcion}</h4>
                     </Card.Text>
                     {!goCart ? (
-                        <ItemCount stock={item.stock} onAdd={onAdd}/>
+                        <ItemCount stock={producto.stock} onAdd={onAdd}/>
                         
                     ) : (
                         <div>

@@ -1,34 +1,43 @@
 import React from 'react';
 import {useState, useEffect} from "react";
-import {getFetch} from "../../helpers/getFetch"
+// import {getFetch} from "../../helpers/getFetch"
 import ItemList from '../ItemList/ItemList';
 import "../estilos/ItemListContainer.css";
 import {Spinner} from "react-bootstrap"
 import {useParams} from "react-router-dom"
+import{ collection, query, where,getFirestore, getDocs} from "firebase/firestore"
+
+
 
 
 function ItemListContainer({saludo}) {
     const[productos, setProductos] = useState([])
+
     const [loading, setLoading] = useState(true)
 
     const {idCateg} = useParams()
 
     useEffect(() => {
+        const db = getFirestore()
         if (idCateg) {
-            getFetch
-                .then(resp => setProductos(resp.filter(prod => prod.categ === idCateg)))
-                .catch(err => console.log(err))
-                .finally(()=> setLoading(false))
+            
+            const queryCollection = query(collection(db, "productos"),where("categ", "==", idCateg))
+            getDocs(queryCollection)
+            .then(resp => setProductos(resp.docs.map(prod => ({id: prod.id, ...prod.data()}))))
+            .catch(err => console.log(err))
+            .finally(()=> setLoading (false))
         } else {
-            getFetch
-                .then(resp => setProductos(resp))
-                .catch(err => console.log(err))
-                .finally(()=> setLoading(false))
+            const db = getFirestore(idCateg)
+            const queryCollection = collection(db, "productos")
+            getDocs(queryCollection)
+            .then(resp => setProductos(resp.docs.map(prod => ({id: prod.id, ...prod.data()}))))
+            .catch(err => console.log(err))
+            .finally(()=> setLoading (false))
         }
 
-
-        
     }, [idCateg]);
+
+
 
 
     return (

@@ -24,7 +24,7 @@ function Cart() {
                 <Table striped bordered hover variant="dark" className="width offset-lg-2 mt-4">
                     <thead>
                         <tr>
-                            <th>ID</th>
+                            <th></th>
                             <th>Producto</th>
                             <th>Cantidad</th>
                             <th>Precio X unidad</th>
@@ -35,11 +35,11 @@ function Cart() {
                     <tbody>
                     {cartList.map(item=>
                         <tr>
-                            <td><Button className="btn btn-dark m-2" onClick={() => borrarItem(item.id)}>🗑</Button>{item.id}</td>
+                            <td><Button className="btn btn-dark m-2" onClick={() => borrarItem(item.id)}>🗑</Button></td>
                             <td>{item.title}</td>
                             <td>{item.cantidad}</td>
                             <td>$ {item.precio}</td>
-                            <td><img src={`${item.imagen}`} width="50%" alt="ImagenProducto"/></td>
+                            <td><img src={`${item.imagenID}`} width="50%" alt="ImagenProducto"/></td>
                             <td>$ {item.precio * item.cantidad}</td>
                         </tr>)}
                         <tr>
