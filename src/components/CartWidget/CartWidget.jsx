@@ -5,6 +5,7 @@ import "../estilos/ItemDetail.css"
 
 function CartWidget() {
     const {cartList,} = useCartContext()
+    const num = cartList.reduce((acc, item) => acc + item.cantidad,0)
 
     return (
         <>
@@ -13,7 +14,7 @@ function CartWidget() {
             :
             (<>
             <Badge pill bg="dark">
-            {cartList.length}
+            {num}
             </Badge>
             </>)}
         </>

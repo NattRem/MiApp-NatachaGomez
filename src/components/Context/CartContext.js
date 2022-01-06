@@ -37,6 +37,13 @@ function CartContextProvider({children}) {
 
     const totalPrice = cartList.map(x=>x.cantidad * x.precio).reduce((a,b)=>a+b,0)
 
+    // function Comprar() {
+    //     compra.buyer = buyerData
+    //     compra.items = cartList
+    //     compra.total = total
+    //     console.log(compra);
+    // }
+
     
     return (
         <CartContext.Provider value ={{
