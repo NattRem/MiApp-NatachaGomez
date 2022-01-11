@@ -1,6 +1,5 @@
 import React from 'react';
 import {useState, useEffect} from "react";
-// import {getFetch} from "../../helpers/getFetch"
 import ItemList from '../ItemList/ItemList';
 import "../estilos/ItemListContainer.css";
 import {Spinner} from "react-bootstrap"

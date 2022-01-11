@@ -2,25 +2,28 @@
 import { Button, Table } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { useCartContext } from '../Context/CartContext'
+import Form from '../Form/Form'
 
 
 
 
 function Cart() {
 
-    const {cartList, borrarCarrito,borrarItem, totalPrice} = useCartContext()
+    const {cartList, borrarCarrito,borrarItem, totalPrice, handleShow} = useCartContext()
 
     
     return (
         <div className="mb-4 mt-4 pt-4 pb-5">
-            {cartList.length === 0 ? (
-                                    <div className="mb-4 mt-4 pt-4 pb-5">
-                                        <h2 className="mb-4 mt-4 pt-5 pb-5 detail-texto border">NO HAY PRODUCTOS EN EL CARRITO</h2>
-                                        <Link to="/" className="btn btn-dark mb-4 mt-4 p-3" >Volver a la tienda</Link>
-                                    </div>
-                                    )
+            
+            {!cartList.length ? 
+            (<div>
+                <h2 className="m-4 p-5 detail-texto border">NO HAY PRODUCTOS EN EL CARRITO</h2>
+                <Link to="/" className="btn btn-dark mb-4 mt-4 p-3" >Volver a la tienda</Link>
+            </div>
+            )
             :
-            (<div className="mb-4 mt-4 pt-4 pb-5">
+            (<div >
+                
                 <Table striped bordered hover variant="dark" className="width offset-lg-2 mt-4">
                     <thead>
                         <tr>
@@ -45,12 +48,19 @@ function Cart() {
                         <tr>
                             <td>TOTAL</td>
                             <td><strong>$ {totalPrice}</strong></td>
+                            
                         </tr>
                     </tbody>
                     
                 </Table>
                 <Button className="btn btn-dark m-3" onClick={borrarCarrito}>Vaciar Carrito</Button>
                 <Link to="/" className="btn btn-dark m-4" >Seguir comprando</Link>
+                <Button className="btn btn-dark m-3 border-info"  onClick={handleShow}>
+                    Finalizar compra
+                </Button>
+                <Form />
+                
+                
             </div>
             )}
             

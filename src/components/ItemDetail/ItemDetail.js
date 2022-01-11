@@ -25,7 +25,6 @@ const ItemDetail = ({ producto }) => {
                     progress: undefined,
                     theme: "dark"
                     });
-        console.log(cantidad);
         setGoCart(true);
         agregarAlCarrito({...producto, cantidad:cantidad})
     }

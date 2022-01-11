@@ -1,4 +1,9 @@
 import {createContext, useState, useContext} from "react"
+import {addDoc, collection, getFirestore, Timestamp} from "firebase/firestore"
+import { toast } from 'react-toastify'
+
+
+
 
 const CartContext = createContext ([])
 export const useCartContext = ()=> useContext(CartContext)
@@ -7,6 +12,19 @@ export const useCartContext = ()=> useContext(CartContext)
 
 function CartContextProvider({children}) {
     const [cartList, setCartList] = useState([])
+    const [idOrden, setidOrden] = useState("")
+
+    const [ dataForm, setdataForm] = useState({ 
+        name:"", email:"", phone:""
+    })
+
+    const handleChange = (e) =>{
+        setdataForm({ 
+            ...dataForm, 
+            [e.target.name]: e.target.value
+        })
+    }
+
 
 
 
@@ -16,10 +34,10 @@ function CartContextProvider({children}) {
 
         if (index > -1) {
             const oldItem = cartList[index].cantidad
+            let items = [...cartList]
+            items.splice(index, 1)
 
-            cartList.splice(index, 1)
-
-            setCartList([...cartList, { ...item, cantidad: item.cantidad + oldItem}])
+            setCartList([...items, { ...item, cantidad: item.cantidad + oldItem}])
 
         } else {
             setCartList([...cartList, item])
@@ -34,15 +52,53 @@ function CartContextProvider({children}) {
     function borrarCarrito() {
         setCartList([])
     }
+    
+    //MODAL
+    const [show, setShow] = useState(false);
 
-    const totalPrice = cartList.map(x=>x.cantidad * x.precio).reduce((a,b)=>a+b,0)
+    const handleClose = () => setShow(false);
+        
+    const handleShow = () => setShow(true);
 
-    // function Comprar() {
-    //     compra.buyer = buyerData
-    //     compra.items = cartList
-    //     compra.total = total
-    //     console.log(compra);
-    // }
+
+    const totalPrice = cartList.reduce((acum, item) => acum + (item.cantidad * item.precio),0)
+
+    const generarOrden = (e) =>{
+        e.preventDefault()
+        let orden ={}
+        orden.date = Timestamp.fromDate(new Date())
+
+        orden.buyer = dataForm
+        orden.total = totalPrice
+        orden.items = cartList.map(cartItem => {
+            const id = cartItem.id;
+            const nombre = cartItem.title
+            const precio = cartItem.precio * cartItem.cantidad
+            const cantidad = cartItem.cantidad
+
+            return {id, nombre, precio, cantidad}
+        })
+        
+        
+        const db = getFirestore()
+        const coleccion = collection(db, "ordenes")
+        addDoc(coleccion, orden)
+        .then(resp => setidOrden(resp.id))
+        .catch (err => console.log(err))
+
+        toast(`Su compra fue procesada con exito.
+                El ID de su compra es: ${idOrden.length !== 0 && idOrden}`, {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark"
+        });
+    }
+
 
     
     return (
@@ -51,7 +107,14 @@ function CartContextProvider({children}) {
             agregarAlCarrito,
             borrarCarrito,
             borrarItem,
-            totalPrice
+            totalPrice,
+            generarOrden,
+            idOrden,
+            handleChange,
+            dataForm,
+            handleClose,
+            handleShow,
+            show
         }}>
             {children}
         </CartContext.Provider>
