@@ -18,6 +18,7 @@ function ItemListContainer({saludo}) {
 
     useEffect(() => {
         const db = getFirestore()
+        
         if (idCateg) {
             
             const queryCollection = query(collection(db, "productos"),where("categ", "==", idCateg))

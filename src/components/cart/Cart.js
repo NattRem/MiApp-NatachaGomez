@@ -7,6 +7,9 @@ import Form from '../Form/Form'
 
 
 
+
+
+
 function Cart() {
 
     const {cartList, borrarCarrito,borrarItem, totalPrice, handleShow} = useCartContext()
