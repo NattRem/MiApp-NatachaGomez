@@ -42,7 +42,7 @@ function ItemListContainer({saludo}) {
 
     return (
         <div className='container-fluid card-title'>
-            {saludo}
+
             {loading ? 
                 <div className='loading'>
                     <br/>
@@ -51,6 +51,7 @@ function ItemListContainer({saludo}) {
                 </div>
             :
             <div className="pb-5">
+    
                 < ItemList productos ={productos}/>
                 
             </ div>

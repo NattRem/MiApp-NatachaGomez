@@ -59,7 +59,7 @@ export const useFormHook = (initialForm, validateForm) => {
 
                 return {id, name, price, quantity}
             })
-            // console.log(orden);
+
             const db = getFirestore()
             const orderCollection = collection(db, "orders")
 
